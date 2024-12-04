@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>INTELLIGENCE CHECK</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="menu">
+        </nav>
+            <button id="htpBtn">HOW TO PLAY</button>
+        </nav>
+        <div id="htpPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>HOW TO PLAY</h2>
+                <ul>
+                    <li>Read the Spell description and enter your guess in the line below.</li>
+                    <li>Each incorrect guess results in one failed Death Save, and you must get one correct answer to earn one back.</li>
+                    <li>If you are stumped, feel free to use the skip button.....or don't. Make your choice at your own risk!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h1>SPELL GUESSER</h1> 
+    </main>
+
+    <div class="deathsavesContainer">
+        <div class="image-container">    
+            <h3 class="deathSaves">DEATH SAVES REMAINING:</h3>
+            <img id="heart1" src="images/heart.png" alt="heart1">
+            <img id="heart2" src="images/heart.png" alt="heart2">
+            <img id="heart3" src="images/heart.png" alt="heart3">
+        </div>  
+    </div>
+
+    <div class="container-wrapper">        
+        <div class="spellGuesser">
+            <h2>Guess the Spell</h2>
+            <p id="spellDescription"></p>
+            <h3 id="correctMessage">Correct!</h3>
+            <h3 id="displayAnswer"></h3>
+            <button id="playAgain">Play Again</button>
+            <div id="endgameContainer">
+                <div id="died">
+                    <h2>YOU DIED</h2>
+                </div>
+                <div id="maxq">
+                    <h2>YIPEE!</h2>
+                </div>
+                <div id="scoreNine" class="score-container">
+                    <p>INT 9 (-1)</p>
+                    <p>Who needs to know stuff when you can just hit things?</p>
+                </div>
+                <div id="scoreTen" class="score-container">
+                    <p>INT 10 (+0)</p>
+                    <p>A little slow on the uptake, but you'll get there!</p>
+                </div>
+                <div id="scoreTwelve" class="score-container">
+                    <p>INT 12 (+1)</p>
+                    <p>Looks like you've got the basics down... almost.</p>
+                </div>
+                <div id="scoreFourteen" class="score-container">
+                    <p>INT 14 (+2)</p>
+                    <p>Now you're not just swinging wildly; you're strategizing!</p>
+                </div>
+                <div id="scoreSixteen" class="score-container">
+                    <p>INT 16 (+3)</p>
+                    <p>Brains and brawn, you've got it all!</p>
+                </div>
+                <div id="scoreEighteen" class="score-container">
+                    <p>INT 18 (+4)</p>
+                    <p>Impressive! You're becoming quite the scholar!</p>
+                </div>
+                <div id="scoreTwenty" class="score-container">
+                    <p>INT 20 (+5)</p>
+                    <p>Genius on the battlefield and in the library!</p>
+                </div>
+                <div id="scoreTwenty-Two" class="score-container">
+                    <p>INT 22 (+6)</p>
+                    <p>They say knowledge is power, and you've got it in spades!</p>
+                </div>
+                <div id="scoreTwenty-Four" class="score-container">
+                    <p>INT 24 (+7)</p>
+                    <p>...When was the last time you went outside?</p>
+                </div>
+                <div id="scoreTwenty-Six" class="score-container">
+                    <p>INT 26 (+8)</p>
+                    <p>This is why you fail all your strength checks</p>
+                </div>
+                <div id="scoreTwenty-Eight" class="score-container">
+                    <p>INT 28 (+9)</p>
+                    <p>I'm scared of you</p>
+                </div>
+            </div>
+        </div>
+        <div class="inputContainer">
+            <input type="text" id="guessInput" placeholder="Enter your Guess" />
+            <button id="guessButton">Guess</button>
+            <button id="skipButton">Skip</button>
+        </div>
+    </div>
+	<script src="scripts/scripts.js" defer></script>
+</body>
+</html>

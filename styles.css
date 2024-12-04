@@ -1,0 +1,282 @@
+body {
+    background-color: darkslategray;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    /* text-align: center; */
+    color:aliceblue;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.menu {
+    /* positioning */
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 50px;
+    margin-right: 50px;
+    z-index: 1000;
+}
+
+.menu nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu button {
+    font-size: large;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    color: aliceblue;
+    padding: 10px 20px;
+}
+
+.menu button:hover {
+    color: blueviolet;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background-color: cadetblue;
+    align-items: center;
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.popup-content {
+    position: relative;
+    background-color:antiquewhite;
+    font-size: large;
+    text-align: center;
+    color:darkslategray;
+    text-decoration: none;
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+.popup-content h2 {
+    font-size: large;
+    text-align: center;
+    text-decoration: none;
+    color: darkslategray;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    color: darkslategray;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.show {
+    display: block;
+}
+
+#xlogo, #beaconslogo {
+    width: 40px;
+    height: auto;
+}
+#discordlogo {
+    width: 50px;
+    height: auto;
+}
+#coffeelogo {
+    width: 30px;
+    height: auto;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+}
+
+li {
+    padding: 5px 0;
+}
+
+.container-wrapper {
+    display: flex;
+    text-align: center;
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 75px;
+}
+
+.spellGuesser {
+    background-color: burlywood;
+    color: darkslategray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+    min-height: 400px;
+    display: flex;
+    margin-bottom: 20px; 
+    flex-direction: column; 
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box; 
+}
+
+.spellGuesser p {
+    text-align: center;
+    margin-top: 20px;
+}
+.spellGuesser h3 {
+    display: none;
+}
+.spellGuesser h2 {
+    display: block;
+}
+
+.inputContainer {
+    background-color: burlywood;
+    color: darkslategray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    height: 50px;
+    width: 400px;
+}
+
+#guessInput {
+    font-size: 16px;
+    width: 800px;
+    height: 25px;
+    padding: 8px;
+    border: 5px solid #ccc;
+    border-radius: 10px;
+}
+
+#guessInput:focus{
+    outline: none;
+}
+
+#skipButton, #guessButton, #playAgain {
+    background-color: #FFFFFF;
+    border: 3px solid rgb(209,213,219);
+    border-radius: .5rem;
+    color: #111827;
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+#playAgain {
+    display: none;
+    align-self: center;
+    margin-top: auto;
+}
+
+#skipButton:hover, #guessButton:hover, #playAgain:hover {
+    color:blueviolet;
+    border: 3px solid rgb(209,213,219);
+    border-radius: .5rem;
+    background-color: cadetblue;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+#endgameContainer {
+    text-align: center;
+    color: darkslategray;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: none;
+    position: absolute;
+    top: 30%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1; 
+    box-sizing: border-box;
+}
+
+#died, #maxq {
+    display: none;;
+}
+.score-container {
+    margin-bottom: 0;
+    margin-top: 2px;
+    display: none;
+}
+
+@keyframes flashJiggleInputRed {
+    0%, 100% { border-color: burlywood; transform: translateX(0); }
+    25%, 75% { border-color: red; }
+    50% { transform: translateX(-2px); }
+}
+
+.flash-jiggleRed {
+    animation: flashJiggleInputRed 0.5s ease-in-out 4, jiggleInput 0.5s ease-in-out 3 alternate;
+}
+
+@keyframes flashJiggleInputGreen {
+    0%, 100% { border-color: burlywood; transform: translateX(0); }
+    25%, 75% { border-color: green; }
+    50% { transform: translateX(-2px); }
+}
+
+.flash-jiggleGreen {
+    animation: flashJiggleInputGreen 0.5s ease-in-out 4, jiggleInput 0.5s ease-in-out 3 alternate;
+}
+
+.image-container{
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: aliceblue;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: flex-end; 
+}
+
+.deathSaves {
+    display: flex; 
+    align-items: center;
+    margin: 0 auto; 
+    width: 100%; 
+    max-width: 400px; 
+    padding-right: 10px;
+}
+
+
+#heart1, #heart2, #heart3 {
+    width: 30px;
+    height: 25px;
+    padding-right: 5px;
+    visibility: visible;
+}
+
