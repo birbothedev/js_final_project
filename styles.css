@@ -4,14 +4,12 @@ body {
 }
 
 h1 {
-    /* text-align: center; */
     color:aliceblue;
     margin-top: 50px;
     margin-left: 100px;
 }
 
 .menu {
-    /* positioning */
     position: absolute;
     top: 0;
     right: 0;
@@ -223,13 +221,9 @@ li {
     box-sizing: border-box;
 }
 
-#died, #maxq {
-    display: none;;
-}
-.score-container {
+#finalScore {
     margin-bottom: 0;
     margin-top: 2px;
-    display: none;
 }
 
 @keyframes flashJiggleInputRed {

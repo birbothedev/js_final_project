@@ -22,21 +22,17 @@ async function displaySpellDescription(spellData) {
     const spellDescription = spellData.desc[0];
     document.getElementById('spellDescription').innerText = spellDescription;
     localStorage.setItem('correctAnswer', spellData.name);
-    // console.log('Correct answer: ', spellData.name);
+    console.log('Correct answer: ', spellData.name);
 }
 
 async function displayRandomQuestion() {
     totalQuestions++
-    // console.log('Total Questions: ', totalQuestions);
     if (gameEnded || totalQuestions >= maxQuestions) {
-        // console.log('Game ended or reached max questions');
         endGame(totalQuestions >= maxQuestions ? 'maxQuestions' : 'outOfHearts');
         return;
     }
-
     let questionData;
     let questionAlreadyAsked = true;
-
     while (questionAlreadyAsked) {
         questionData = await fetchRandomSpell();
         if (!askedQuestions.includes(questionData.name)) {
@@ -44,7 +40,6 @@ async function displayRandomQuestion() {
             askedQuestions.push(questionData.name);
         }
     }
-
     await displaySpellDescription(questionData);
 }
 
@@ -54,10 +49,8 @@ function updateHeartDisplay() {
     heartImages.forEach((image, index) => {
         if (index < remainingHearts) {
             image.style.visibility = 'visible'; 
-            // console.log(`Heart ${index + 1} displayed`);
         } else {
             image.style.visibility = 'hidden'; 
-            // console.log(`Heart ${index + 1} hidden`);
         }
     });
 }
@@ -112,61 +105,36 @@ function checkGuess() {
 
 function endGame(reason) {
     gameEnded = true;
+    let finalScoreBlock = document.getElementById("scoreText");
+    let finalMessageBlock = document.getElementById("scoreMessage");
+    let endMessage = document.getElementById('endMessage');
+    const scoreMap = {	10: { score: "INT 28 (+9)", finalMessage: "I'm scared of you" },
+    9: { score: "INT 26 (+8)", finalMessage: "This is why you fail all your strength checks" },
+    8: { score: "INT 24 (+7)", finalMessage: "...When was the last time you went outside?" },
+    7: { score: "INT 22 (+6)", finalMessage:"They say knowledge is power, and you've got it in spades!", },
+    6: { score: "INT 20 (+5)", finalMessage:"Genius on the battlefield and in the library!", },
+    5: { score: "INT 18 (+4)", finalMessage:"Impressive! You're becoming quite the scholar!", },
+    4: { score: "INT 16 (+3)", finalMessage:"Brains and brawn, you've got it all!", },
+    3: { score: "INT 14 (+2)", finalMessage:"Now you're not just swinging wildly. You're strategizing!", },
+    2: { score: "INT 12 (+1)", finalMessage:"Looks like you've got the basics down... almost.", },
+    1: { score: "INT 10 (+0)", finalMessage:"A little slow on the uptake, but you'll get there", },
+    0: { score: "INT 9 (-1)", finalMessage:"Who needs to know stuff when you can just hit things", }};
 
     setTimeout(() => {
-        // Hide game elements
         document.querySelector('.spellGuesser h2').style.display = 'none';
         document.getElementById('spellDescription').style.display = 'none';
-
-        // Show end game container
         document.getElementById('endgameContainer').style.display = 'block';
 
-        // Display reason for game ending
         if (reason === 'outOfHearts') {
-            document.getElementById('died').style.display = 'block';
+            endMessage.textContent = "YOU DIED!"
+            
         } else {
-            document.getElementById('maxq').style.display = 'block';
+            endMessage.textContent = "YIPEE!"
         }
 
-        // Display score message based on the number of correct answers
-        switch (right) {
-            case 10:
-                document.getElementById('scoreTwenty-Eight').style.display = 'block';
-                break;
-            case 9:
-                document.getElementById('scoreTwenty-Six').style.display = 'block';
-                break;
-            case 8:
-                document.getElementById('scoreTwenty-Four').style.display = 'block';
-                break;
-            case 7:
-                document.getElementById('scoreTwenty-Two').style.display = 'block';
-                break;
-            case 6:
-                document.getElementById('scoreTwenty').style.display = 'block';
-                break;
-            case 5:
-                document.getElementById('scoreEighteen').style.display = 'block';
-                break;
-            case 4:
-                document.getElementById('scoreSixteen').style.display = 'block';
-                break;
-            case 3:
-                document.getElementById('scoreFourteen').style.display = 'block';
-                break;
-            case 2:
-                document.getElementById('scoreTwelve').style.display = 'block';
-                break;
-            case 1:
-                document.getElementById('scoreTen').style.display = 'block';
-                break;
-            case 0:
-                document.getElementById('scoreNine').style.display = 'block';
-                break;
-            default:
-                console.log('Unexpected score value');
-        }
-        // Show play again button
+        finalScoreBlock.textContent = scoreMap[right].score;
+        finalMessageBlock.textContent = scoreMap[right].finalMessage;
+
         document.getElementById('playAgain').style.display = 'block';
     }, 2000);
 }
@@ -252,24 +220,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // BUTTONS
-var aboutBtn = document.getElementById("aboutBtn");
-var settingsBtn = document.getElementById("settingsBtn");
 var htpBtn = document.getElementById("htpBtn");
-
-var aboutPopup = document.getElementById("aboutPopup");
-var settingsPopup = document.getElementById("settingsPopup");
 var htpPopup = document.getElementById("htpPopup");
-
 var closeBtns = document.querySelectorAll(".close");
 
 function togglePopup(popup) {
     popup.classList.toggle("show");
 }
-
 htpBtn.addEventListener("click", function() {
     togglePopup(htpPopup);
 });
-
 closeBtns.forEach(function(btn) {
     btn.addEventListener("click", function() {
         var popup = btn.parentElement.parentElement;
